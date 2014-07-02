@@ -1,0 +1,47 @@
+<div class="page-header">
+
+<h3>Bugs</h3>
+
+</div>
+<div class="row">
+<div class="span11"></div>
+<% if can? :create, :project %>
+<a href="/bugs/new"><div class="btn btn-primary btn-mini">Add New</div></a></p>
+<%end%>
+</div>
+<table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Project</th>
+          <th>Description</th>
+          <th>Creator</th>
+          <th>Solver</th>
+          <th>Type</th>
+          <th>Status</th>
+          <th>Deadline</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+      <% @bug.each do |bugs| %>
+      	
+      	<tr>
+      		<td><%= link_to bugs.id, bugs %></td>
+      		
+      		<td><%=bugs.title%></td>
+      		<td><%=bugs.project.title%></td>
+      		<td><%=bugs.description%></td>
+      		<td><%=bugs.creator.email%></td>
+      		<td><%=bugs.solver.email%></td>
+      		<td><%=bugs.role%></td>
+      		<td><%=bugs.status%></td>
+      		<td><%=bugs.deadline%></td>
+      	</tr>
+      	
+      <%end%>
+
+      </tbody>
+    </table>
+

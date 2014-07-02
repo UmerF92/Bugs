@@ -1,0 +1,31 @@
+<div class="page-header">
+<h3><%= @project.title.capitalize %></h3>
+</div>
+
+
+		<div class="jumbotron panel panel-default img-polaroid">
+		<div class="panel-body">
+  		<br>
+  		<div class="row-fluid">
+  		<div id="info" class="span7">
+  		<h1><%= @project.title.capitalize %></h1>
+  		<ul class="list-group">
+  			<p> <b>Title : </b> <%=@project.title%></p>
+  			<p> <b>Project : </b><%=@project.manager.email%></p>
+  			<p> <b>Description : </b><%=@project.description%></p>
+  			<div class="row">
+  			<div class="span1"></div>
+  			<div class="doit">
+  			<% if @temp==nil%>
+         <%= link_to 'Workon', workon_path(@project.id), :class => 'btn' %>
+        <%end%>
+        
+  			</div>
+  			</div>
+  		</ul>
+  		</div>
+  		</div>
+  		</div>
+		</div>
+
+

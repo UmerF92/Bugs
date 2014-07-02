@@ -1,0 +1,61 @@
+<div class="page-header">
+<h3>Report a new Bug/Feature</h3>
+</div>
+
+<%= form_for @bug, :html => {:multipart => true} do |f| %>
+  <% if @bug.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @bug.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :Title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :Description %>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :Creater %>
+    <input type="text" name="bug[creator_id]" value= <%= current_user.email %> disabled>
+  </div>
+  <div class="field">
+    <select name="bug[solver_id]">
+      <%= @array.each do |arr| %>
+        <option value="<%= arr.id %>"><%= arr.email %></option>
+      <% end %>
+    </select>
+  </div>
+  <div class="field">
+    <%= f.label :Type %>
+    <%= f.collection_select :role, Bug::BROLES, :to_s, :titleize %>
+  </div>
+  <div class="field">
+  <%= f.label :Project %>
+    <select name="bug[project_id]">
+      <%= @project.each do |proj| %>
+        <option value="<%= proj.id %>"><%= proj.title %></option>
+      <% end %>
+    </select>
+  </div>
+  <div class="field">
+    <%= f.label :Status %>
+    <%= f.collection_select :status, Bug::BROLES, :to_s, :titleize %>
+  </div>
+  <div class="field">
+    <%= f.label :deadline %>
+    <input type="date" name="bug[deadline]">
+  </div>
+
+  <div class="field">
+    <%= f.label :screenshot %>
+  	<%= f.file_field :screenshot %>
+  </div>
+  <div class="actions"><%= f.submit %></div>
+<% end %>

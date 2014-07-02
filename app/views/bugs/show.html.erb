@@ -1,0 +1,32 @@
+<div class="page-header">
+<h3><%= @bug.title %></h3>
+</div>
+
+
+		<div class="jumbotron panel panel-default img-polaroid">
+		<div class="panel-body">
+  		<br>
+  		<div class="row-fluid">
+  		<div id="info" class="span7">
+  		<h1><%= @bug.title.capitalize %></h1>
+  		<ul class="list-group">
+  			<p> <b>Title : </b> <%=@bug.title%></p>
+  			<p> <b>Project : </b><%=@bug.project.title%></p>
+  			<p> <b>Description : </b><%=@bug.description%></p>
+  			<p> <b>Creatore : </b><%=@bug.creator.email%></p>
+  			<p> <b>Solver : </b><%=@bug.solver.email%></p>
+  			<p> <b>Type : </b><%=@bug.role%></p>
+  			<p> <b>Status : </b><%=@bug.status%></p>
+  			<p> <b>Deadline : </b><%=@bug.deadline%></p>
+  			<p><a class="btn btn-danger btn-lg" role="button">Delete</a></p>
+  		</ul>
+  		</div>
+  		<div id="image" class="span4">
+  			<%= image_tag @bug.screenshot_url if @bug.screenshot? %>
+  		</div>
+  		</div>
+  		</div>
+		</div>
+
+			
+      		

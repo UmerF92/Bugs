@@ -1,0 +1,32 @@
+<div class="page-header">
+<h3>Create a new Project</h3>
+</div>
+
+<%= form_for @project, :html => {:multipart => true} do |f| %>
+  <% if @project.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @project.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :Title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :Description %>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :Manager %>
+    <input type="text" name="bug[creator_id]" value= <%= current_user.email %> disabled>
+  </div>
+  
+  
+  
+  <div class="actions"><%= f.submit %></div>
+<% end %>

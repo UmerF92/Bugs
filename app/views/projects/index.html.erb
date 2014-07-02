@@ -1,0 +1,35 @@
+<div class="page-header">
+
+<h3>Projects</h3>
+
+</div>
+<div class="row">
+<div class="span11"></div>
+<% if can? :create, :project %>
+<a href="/projects/new" class="btn btn-primary btn-mini" role="button">Add New</a></p>
+<%end%>
+</div>
+<table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Manager</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+      <% @project.each do |projects| %>
+      	
+      	<tr>
+      		<td><%= link_to projects.id, projects %></td>
+      		<td><%=projects.title%></td>
+      		<td><%=projects.manager.email%></td>
+      		<td><%=projects.description%></td>
+      	</tr>
+      	
+      <%end%>
+
+      </tbody>
+    </table>
