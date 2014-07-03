@@ -9,7 +9,7 @@ resources :sessions
 resources :bugs
 resources :projects
 
-root :to => "login"
+root :to => "sessions#new"
 get "users/index"
 get "bugs/index"
 get "bugs/new" => "bugs#new"
