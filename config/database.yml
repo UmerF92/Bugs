@@ -1,15 +1,21 @@
-connection: &connection
-  adapter: mysql2
-  host: localhost
-  pool: 5
-  timeout: 5000
-  username: root
-  password: zaqxsw
-
 development:
-  <<: *connection
+  adapter: postgresql
+  encoding: unicode
   database: bugzilla
-
-test: &test
-  <<: *connection
+  pool: 5
+  username: postgres
+  password: password
+test:
+  adapter: postgresql
+  encoding: unicode
   database: bugzilla
+  pool: 5
+  username: postgres
+  password: password
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: bugzilla
+  pool: 5
+  username: postgres
+  password: password
